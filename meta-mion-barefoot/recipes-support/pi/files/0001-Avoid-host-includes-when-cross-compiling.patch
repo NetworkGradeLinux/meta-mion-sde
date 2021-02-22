@@ -1,0 +1,27 @@
+From 66cb89c86ea827292c088d4546272190c07859e9 Mon Sep 17 00:00:00 2001
+From: Mattias Waldo <mattias.waldo@saabgroup.com>
+Date: Fri, 27 Nov 2020 06:57:04 +0100
+Subject: [PATCH] Avoid host includes when cross-compiling.
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2ad07c1..4b09a74 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -188,8 +188,8 @@ AS_IF([test "x$CLANG" = "xyes"],
+       [EXTRA_CFLAGS="$EXTRA_CFLAGS -Wno-tautological-constant-out-of-range-compare"])
+ AC_SUBST([AM_CFLAGS], ["$PTHREAD_CFLAGS $EXTRA_CFLAGS"])
+ 
+-AC_SUBST([AM_CPPFLAGS], ["-DPI_LOG_ON -isystem$INCLUDE_DIR"])
+-AC_SUBST([AM_LDFLAGS], ["-L$LIB_DIR"])
++AC_SUBST([AM_CPPFLAGS], ["-DPI_LOG_ON"])
++#AC_SUBST([AM_LDFLAGS], ["-L$LIB_DIR"])
+ 
+ # Generate makefiles
+ AC_CONFIG_FILES([Makefile
+-- 
+2.25.1
+

@@ -1,0 +1,40 @@
+From 1bcf321d2518776584b0c70a88e0b3cf9469a3a8 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Mon, 7 Dec 2020 17:12:36 +0000
+Subject: [PATCH] Dont search hardcoded paths, we might be doing a cross-build
+ Use '=' in-front to let compiler append sysroot, if it can
+
+Should fix things like
+
+configure:6972: arm-angstrom-linux-gnueabi-gcc  -march=armv7-a -mthumb-interwork -mfloat-abi=hard -mfpu=neon -mtune=cortex-a8 -DNDEBUG -fno-inline -D__SOFTFP__ --sysroot=/build/v2013.06/build/tmp-angstrom_v2013_06-eglibc/sysroots/beaglebone -c -O2 -pipe -g -feliminate-unused-debug-types  -I/usr/include/ncursesw conftest.c >&5
+cc1: warning: include location "/usr/include/ncursesw" is unsafe for cross-compilation [-Wpoison-system-directories]
+
+Signed-off-by: Khem Raj
+Upstream-Status: Pending
+
+---
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 873a1de..0c0f66b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1239,7 +1239,7 @@ class PyBuildExt(build_ext):
+         panel_library = 'panel'
+         if curses_library == 'ncursesw':
+             curses_defines.append(('HAVE_NCURSESW', '1'))
+-            curses_includes.append('/usr/include/ncursesw')
++            curses_includes.append('=/usr/include/ncursesw')
+             # Bug 1464056: If _curses.so links with ncursesw,
+             # _curses_panel.so must link with panelw.
+             panel_library = 'panelw'
+@@ -1891,7 +1891,7 @@ class PyBuildExt(build_ext):
+         if host_platform == 'darwin':
+             # OS X 10.5 comes with libffi.dylib; the include files are
+             # in /usr/include/ffi
+-            inc_dirs.append('/usr/include/ffi')
++            inc_dirs.append('=/usr/include/ffi')
+ 
+         ffi_inc = [sysconfig.get_config_var("LIBFFI_INCLUDEDIR")]
+         if not ffi_inc or ffi_inc[0] == '':

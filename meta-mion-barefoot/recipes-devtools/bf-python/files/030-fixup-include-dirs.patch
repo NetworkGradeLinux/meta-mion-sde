@@ -1,0 +1,36 @@
+From cca196e024f29d2cf565edde2d70d5603d18b33c Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Mon, 7 Dec 2020 17:12:20 +0000
+Subject: [PATCH] Do not hardcode /usr into include paths when cross compiling
+
+-Khem
+
+Upstream-Status: Pending
+
+---
+ setup.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 88c3759..4748fcf 100644
+--- a/setup.py
++++ b/setup.py
+@@ -456,7 +456,8 @@ class PyBuildExt(build_ext):
+         # only change this for cross builds for 3.3, issues on Mageia
+         if cross_compiling:
+             self.add_gcc_paths()
+-        self.add_multiarch_paths()
++        if not cross_compiling:
++            self.add_multiarch_paths()
+ 
+         # Add paths specified in the environment variables LDFLAGS and
+         # CPPFLAGS for header and library files.
+@@ -492,7 +493,7 @@ class PyBuildExt(build_ext):
+                     for directory in reversed(options.dirs):
+                         add_dir_to_list(dir_list, directory)
+ 
+-        if os.path.normpath(sys.base_prefix) != '/usr' \
++        if not cross_compiling and os.path.normpath(sys.base_prefix) != '/usr' \
+                 and not sysconfig.get_config_var('PYTHONFRAMEWORK'):
+             # OSX note: Don't add LIBDIR and INCLUDEDIR to building a framework
+             # (PYTHONFRAMEWORK is set) to avoid # linking problems when

@@ -1,0 +1,22 @@
+From 3181693f837d5090125d7e954aed8a3a7cb20525 Mon Sep 17 00:00:00 2001
+From: Mattias Waldo <mattias.waldo@saabgroup.com>
+Date: Thu, 26 Nov 2020 07:37:06 +0000
+Subject: [PATCH] Don't build doc, test.
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 75e6968..eaad42d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,7 +10,7 @@ AUTOMAKE_OPTIONS = foreign
+ # test (for libJudy).
+ #SUBDIRS = src tool doc test make_includes
+ #SUBDIRS = src/JudyCommon src/JudyL src/Judy1 src/JudySL src/JudyHS src/obj
+-SUBDIRS = src tool doc test
++SUBDIRS = src tool
+
+ # These files will be included in our tarballs, even though automake knows
+ # nothing else about them.

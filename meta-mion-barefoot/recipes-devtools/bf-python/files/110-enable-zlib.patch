@@ -1,0 +1,26 @@
+From 7782aa76bf2fba4f8562c02ccb0e29309e39a19a Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Mon, 7 Dec 2020 17:12:24 +0000
+Subject: [PATCH] Enable zlib in python
+
+-Khem
+
+Upstream-Status: Inappropriate [OE-Specific]
+
+---
+ Modules/Setup.dist | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Modules/Setup.dist b/Modules/Setup.dist
+index b60b594..8e6f867 100644
+--- a/Modules/Setup.dist
++++ b/Modules/Setup.dist
+@@ -358,7 +358,7 @@ _symtable symtablemodule.c
+ # Andrew Kuchling's zlib module.
+ # This require zlib 1.1.3 (or later).
+ # See http://www.gzip.org/zlib/
+-#zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz
++zlib zlibmodule.c -lz
+ 
+ # Interface to the Expat XML parser
+ #

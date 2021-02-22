@@ -1,0 +1,23 @@
+In order to use the meta-mion-sde/meta-mion-barefoot layer you must have the
+barefoot reference bsp in a zip file located in MIONBASE/bf-sde and the barefoot
+sde (9.2.0) in tgz format in MIONBASE/bf-sde. You should then git init and git add .
+and git commit all files in that directory.
+
+This is just for the P4 POC and will change.
+
+~/mion/bf-sde$ ls -al
+total 402624
+drwxrwxr-x  3 pidge pidge      4096 Feb  9 09:38 .
+drwxrwxr-x 19 pidge pidge      4096 Feb 18 16:31 ..
+-rw-r--r--  1 pidge pidge   1992512 Jan 25 11:05 bf-reference-bsp-9.2.0-BF2556-main.zip
+-rw-rw-r--  1 pidge pidge 410274997 Feb  1 14:21 bf-sde-9.2.0.tgz
+drwxrwxr-x  8 pidge pidge      4096 Feb  9 09:37 .git
+
+In order to add the SDE to your image, add IMAGE_INSTALL += "packagegroup-sde-barefoot"
+to your local.conf
+
+A reference p4 program called p4helloworld is in meta-mion-barefoot/recipes-extended.
+Adding this to the image will allow you to compile the program locally and pack it into
+the image. Eventually, we'll also allow this to be flashed to the tofino on boot (not
+supported in POC)
+

@@ -1,0 +1,36 @@
+From 88ea451f683b6696ba4860d95961a62a077148be Mon Sep 17 00:00:00 2001
+From: Mattias Waldo <mattias.waldo@saabgroup.com>
+Date: Thu, 26 Nov 2020 09:31:19 +0000
+Subject: [PATCH] Use JudyLTablesGen on PATH instead of local.
+
+---
+ src/Judy1/Makefile.am | 2 +-
+ src/JudyL/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Judy1/Makefile.am b/src/Judy1/Makefile.am
+index 0a06053..1830331 100644
+--- a/src/Judy1/Makefile.am
++++ b/src/Judy1/Makefile.am
+@@ -18,7 +18,7 @@ libinline_la_SOURCES = j__udy1Test.c
+ libinline_la_CFLAGS = $(AM_CFLAGS) -DJUDYGETINLINE
+ 
+ Judy1Tables.c: Judy1TablesGen.c
+-	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
++	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o Judy1TablesGen Judy1TablesGen.c; Judy1TablesGen
+ 
+ Judy1ByCount.c:../JudyCommon/JudyByCount.c
+ 	cp -f ../JudyCommon/JudyByCount.c      		Judy1ByCount.c   
+diff --git a/src/JudyL/Makefile.am b/src/JudyL/Makefile.am
+index ef7f61d..0141a73 100644
+--- a/src/JudyL/Makefile.am
++++ b/src/JudyL/Makefile.am
+@@ -18,7 +18,7 @@ libinline_la_SOURCES = j__udyLGet.c
+ libinline_la_CFLAGS = $(AM_CFLAGS) -DJUDYGETINLINE
+ 
+ JudyLTables.c: JudyLTablesGen.c
+-	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o JudyLTablesGen JudyLTablesGen.c; ./JudyLTablesGen 
++	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o JudyLTablesGen JudyLTablesGen.c; JudyLTablesGen 
+ 
+ JudyLByCount.c:   ../JudyCommon/JudyByCount.c
+ 	cp -f ../JudyCommon/JudyByCount.c      		JudyLByCount.c   

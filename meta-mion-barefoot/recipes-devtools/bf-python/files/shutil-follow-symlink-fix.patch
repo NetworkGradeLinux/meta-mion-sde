@@ -1,0 +1,26 @@
+From e4b01a7e0b02d70a865ceaf5bca11e1e79dcc437 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Mon, 7 Dec 2020 17:12:35 +0000
+Subject: [PATCH] shutils should consider symlinks
+
+-Khem
+
+Upstream-Status: Pending
+
+---
+ Lib/shutil.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Lib/shutil.py b/Lib/shutil.py
+index d767a0c..98f7c34 100644
+--- a/Lib/shutil.py
++++ b/Lib/shutil.py
+@@ -131,7 +131,7 @@ def copymode(src, dst, *, follow_symlinks=True):
+     st = stat_func(src)
+     chmod_func(dst, stat.S_IMODE(st.st_mode))
+ 
+-if hasattr(os, 'listxattr'):
++if hasattr(os, 'listxattr') and os.listxattr in os.supports_follow_symlinks:
+     def _copyxattr(src, dst, *, follow_symlinks=True):
+         """Copy extended filesystem attributes from `src` to `dst`.
+ 

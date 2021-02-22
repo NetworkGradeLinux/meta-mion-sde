@@ -1,0 +1,114 @@
+From 179adc44d37f1b19ac102a8c12e1e7f1a6c4ca75 Mon Sep 17 00:00:00 2001
+From: Mattias Waldo <mattias.waldo@saabgroup.com>
+Date: Mon, 21 Dec 2020 15:18:24 +0100
+Subject: [PATCH] Avoid shared_ptr ambiguity.
+
+---
+ pdfixed_thrift/bfn_pd_rpc_server.cpp | 67 +++++++++++++---------------
+ 1 file changed, 30 insertions(+), 37 deletions(-)
+
+diff --git a/pdfixed_thrift/bfn_pd_rpc_server.cpp b/pdfixed_thrift/bfn_pd_rpc_server.cpp
+index 0e96236..62be737 100644
+--- a/pdfixed_thrift/bfn_pd_rpc_server.cpp
++++ b/pdfixed_thrift/bfn_pd_rpc_server.cpp
+@@ -37,14 +37,7 @@ using namespace ::apache::thrift::protocol;
+ using namespace ::apache::thrift::transport;
+ using namespace ::apache::thrift::server;
+ 
+-#ifdef HAVE_THRIFT_STDCXX_H
+-#include <thrift/stdcxx.h>
+-namespace stdcxx = ::apache::thrift::stdcxx;
+-#else
+-namespace stdcxx = boost;
+-#endif
+-
+-using ::stdcxx::shared_ptr;
++using ::std::shared_ptr;
+ 
+ #include <pthread.h>
+ 
+@@ -73,55 +66,55 @@ static void *cookie;
+ static void *rpc_server_thread(void *flag) {
+   int port = BFN_PD_RPC_SERVER_PORT;
+   bool is_local_only = *((bool *)flag);
+-  shared_ptr<mcHandler> mc_handler(new mcHandler());
+-  shared_ptr<mirrorHandler> mirror_handler(new mirrorHandler());
+-  shared_ptr<sdHandler> sd_handler(new sdHandler());
+-  shared_ptr<tmHandler> tm_handler(new tmHandler());
+-  shared_ptr<conn_mgrHandler> conn_mgr_handler(new conn_mgrHandler());
+-  shared_ptr<devport_mgrHandler> devport_mgr_handler(new devport_mgrHandler());
+-  shared_ptr<port_mgrHandler> port_mgr_handler(new port_mgrHandler());
+-  shared_ptr<palHandler> pal_handler(new palHandler());
+-  shared_ptr<pktHandler> pkt_handler(new pktHandler());
+-  shared_ptr<plcmtHandler> plcmt_handler(new plcmtHandler());
+-  shared_ptr<knet_mgrHandler> knet_mgr_handler(new knet_mgrHandler());
+-  shared_ptr<pipemgr_apiHandler> pipemgr_api_handler(new pipemgr_apiHandler());
+-
+-  shared_ptr<TMultiplexedProcessor> processor(new TMultiplexedProcessor());
++  std::shared_ptr<mcHandler> mc_handler(new mcHandler());
++  std::shared_ptr<mirrorHandler> mirror_handler(new mirrorHandler());
++  std::shared_ptr<sdHandler> sd_handler(new sdHandler());
++  std::shared_ptr<tmHandler> tm_handler(new tmHandler());
++  std::shared_ptr<conn_mgrHandler> conn_mgr_handler(new conn_mgrHandler());
++  std::shared_ptr<devport_mgrHandler> devport_mgr_handler(new devport_mgrHandler());
++  std::shared_ptr<port_mgrHandler> port_mgr_handler(new port_mgrHandler());
++  std::shared_ptr<palHandler> pal_handler(new palHandler());
++  std::shared_ptr<pktHandler> pkt_handler(new pktHandler());
++  std::shared_ptr<plcmtHandler> plcmt_handler(new plcmtHandler());
++  std::shared_ptr<knet_mgrHandler> knet_mgr_handler(new knet_mgrHandler());
++  std::shared_ptr<pipemgr_apiHandler> pipemgr_api_handler(new pipemgr_apiHandler());
++
++  std::shared_ptr<TMultiplexedProcessor> processor(new TMultiplexedProcessor());
+   processor->registerProcessor(
+-      "mc", shared_ptr<TProcessor>(new mcProcessor(mc_handler)));
++      "mc", std::shared_ptr<TProcessor>(new mcProcessor(mc_handler)));
+   processor->registerProcessor(
+-      "mirror", shared_ptr<TProcessor>(new mirrorProcessor(mirror_handler)));
++      "mirror", std::shared_ptr<TProcessor>(new mirrorProcessor(mirror_handler)));
+   processor->registerProcessor(
+-      "sd", shared_ptr<TProcessor>(new sdProcessor(sd_handler)));
++      "sd", std::shared_ptr<TProcessor>(new sdProcessor(sd_handler)));
+   processor->registerProcessor(
+-      "tm", shared_ptr<TProcessor>(new tmProcessor(tm_handler)));
++      "tm", std::shared_ptr<TProcessor>(new tmProcessor(tm_handler)));
+   processor->registerProcessor(
+       "conn_mgr",
+-      shared_ptr<TProcessor>(new conn_mgrProcessor(conn_mgr_handler)));
++      std::shared_ptr<TProcessor>(new conn_mgrProcessor(conn_mgr_handler)));
+   processor->registerProcessor(
+       "devport_mgr",
+-      shared_ptr<TProcessor>(new devport_mgrProcessor(devport_mgr_handler)));
++      std::shared_ptr<TProcessor>(new devport_mgrProcessor(devport_mgr_handler)));
+   processor->registerProcessor(
+       "port_mgr",
+-      shared_ptr<TProcessor>(new port_mgrProcessor(port_mgr_handler)));
++      std::shared_ptr<TProcessor>(new port_mgrProcessor(port_mgr_handler)));
+   processor->registerProcessor(
+-      "pal", shared_ptr<TProcessor>(new palProcessor(pal_handler)));
++      "pal", std::shared_ptr<TProcessor>(new palProcessor(pal_handler)));
+   processor->registerProcessor(
+-      "pkt", shared_ptr<TProcessor>(new pktProcessor(pkt_handler)));
++      "pkt", std::shared_ptr<TProcessor>(new pktProcessor(pkt_handler)));
+   processor->registerProcessor(
+-      "plcmt", shared_ptr<TProcessor>(new plcmtProcessor(plcmt_handler)));
++      "plcmt", std::shared_ptr<TProcessor>(new plcmtProcessor(plcmt_handler)));
+   processor->registerProcessor(
+       "knet_mgr",
+-      shared_ptr<TProcessor>(new knet_mgrProcessor(knet_mgr_handler)));
++      std::shared_ptr<TProcessor>(new knet_mgrProcessor(knet_mgr_handler)));
+   processor->registerProcessor(
+       "pipemgr_api",
+-      shared_ptr<TProcessor>(new pipemgr_apiProcessor(pipemgr_api_handler)));
++      std::shared_ptr<TProcessor>(new pipemgr_apiProcessor(pipemgr_api_handler)));
+ 
+-  shared_ptr<TServerTransport> serverTransport(
++  std::shared_ptr<TServerTransport> serverTransport(
+       new TServerSocket(is_local_only ? port : port));
+-  shared_ptr<TTransportFactory> transportFactory(
++  std::shared_ptr<TTransportFactory> transportFactory(
+       new TBufferedTransportFactory());
+-  shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
++  std::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
+ 
+   TThreadedServer server(
+       processor, serverTransport, transportFactory, protocolFactory);

@@ -1,0 +1,19 @@
+From 396653b7451fb356ea7f53e67f9b972a28b16759 Mon Sep 17 00:00:00 2001
+From: Mattias Waldo <mattias.waldo@saabgroup.com>
+Date: Mon, 7 Dec 2020 18:19:47 +0100
+Subject: [PATCH] Update shebang to python3.
+
+---
+ Python/makeopcodetargets.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Python/makeopcodetargets.py b/Python/makeopcodetargets.py
+index d9a0855..2ca8137 100755
+--- a/Python/makeopcodetargets.py
++++ b/Python/makeopcodetargets.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ """Generate C code for the jump table of the threaded code interpreter
+ (for compilers supporting computed gotos or "labels-as-values", such as gcc).
+ """

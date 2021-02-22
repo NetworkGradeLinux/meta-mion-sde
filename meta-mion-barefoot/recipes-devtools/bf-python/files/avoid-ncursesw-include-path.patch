@@ -1,0 +1,27 @@
+From 143868508496efb3960cec39f28bccc2ba065cea Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Mon, 7 Dec 2020 17:12:39 +0000
+Subject: [PATCH] Upstream-Status: Pending
+
+We should make sure that sysroot is used by gcc instead of assuming
+hardcoded locations for include paths
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 70bcf87..dbc0e20 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4444,7 +4444,7 @@ fi
+ 
+ # first curses header check
+ ac_save_cppflags="$CPPFLAGS"
+-CPPFLAGS="$CPPFLAGS -I/usr/include/ncursesw"
++CPPFLAGS="$CPPFLAGS -I=/usr/include/ncursesw"
+ 
+ AC_CHECK_HEADERS(curses.h ncurses.h)
+ 

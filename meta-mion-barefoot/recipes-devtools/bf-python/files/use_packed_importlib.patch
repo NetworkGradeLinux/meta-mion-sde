@@ -1,0 +1,30 @@
+From b2a79b8bbe8468efbcd54bb06abf429cabdef166 Mon Sep 17 00:00:00 2001
+From: Alejandro Hernandez <alejandro.hernandez@linux.intel.com>
+Date: Mon, 7 Dec 2020 17:12:42 +0000
+Subject: [PATCH] Upstream-Status: Inappropriate [embedded specific]
+
+The binary _freeze_importlib is built and also used during build time to generate
+importlib*.h files, this is impossible to do on a cross-compile environment,
+this avoids executing the binary and forces it to use the packed importlib*.h files.
+
+Signed-Off-By: Alejandro Hernandez <alejandro.hernandez@linux.intel.com>
+
+---
+ Makefile.pre.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index df8d43b..f5d9973 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -690,8 +690,8 @@ Modules/_freeze_importlib.o: Modules/_freeze_importlib.c
+ Modules/_freeze_importlib: Modules/_freeze_importlib.o $(LIBRARY_OBJS_OMIT_FROZEN)
+ 	$(LINKCC) $(PY_LDFLAGS) -o $@ Modules/_freeze_importlib.o $(LIBRARY_OBJS_OMIT_FROZEN) $(LIBS) $(MODLIBS) $(SYSLIBS) $(LDLAST)
+ 
+-Python/importlib.h: $(srcdir)/Lib/importlib/_bootstrap.py Modules/_freeze_importlib
+-	./Modules/_freeze_importlib \
++#Python/importlib.h: $(srcdir)/Lib/importlib/_bootstrap.py Modules/_freeze_importlib
++#	./Modules/_freeze_importlib \
+ 		$(srcdir)/Lib/importlib/_bootstrap.py Python/importlib.h
+ 
+ 
