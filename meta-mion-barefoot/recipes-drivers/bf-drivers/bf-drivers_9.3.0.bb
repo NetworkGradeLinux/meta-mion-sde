@@ -2,8 +2,6 @@ LICENSE = "CLOSED"
 
 SRC_URI = "git://${MIONBASE}/bf-sde \
            file://sde_mac_learning_aging_crash.patch \
-           file://0001-Avoid-shared_ptr-ambiguity.patch \
-           file://0001-Fix-incomplete-install-path.patch \
            "
 
 SRCREV = "${AUTOREV}"
