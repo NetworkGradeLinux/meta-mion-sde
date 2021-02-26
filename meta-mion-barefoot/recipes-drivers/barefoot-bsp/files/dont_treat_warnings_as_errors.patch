@@ -1,0 +1,12 @@
+diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/configure.ac BF2556X-1T_BSP_9.0.0-master/configure.ac
+--- BF2556X-1T_BSP_9.0.0-master.orig/configure.ac	2020-12-10 07:16:03.569992984 +0100
++++ BF2556X-1T_BSP_9.0.0-master/configure.ac	2020-12-10 07:24:49.684531683 +0100
+@@ -126,7 +126,7 @@
+                             fi \
+                            )"])
+ export PREFIX_PATH
+-AC_SUBST([BFPLATFORMS_CFLAGS], ["-g -Wall -Wextra -Wpedantic -Wno-missing-field-initializers -Wno-unused-parameter -Werror"])
++AC_SUBST([BFPLATFORMS_CFLAGS], ["-g -Wall -Wextra -Wpedantic -Wno-missing-field-initializers -Wno-unused-parameter"])
+ AC_SUBST([AM_CFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
+ AC_SUBST([AM_CXXFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
+ AC_SUBST([AM_CPPFLAGS], ["$MY_CPPFLAGS -I\$(top_srcdir)/drivers/include -I\$(top_srcdir)/platforms/include -I\$(top_srcdir)/platforms/aspn/tcl_server/include"])
