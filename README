@@ -1,0 +1,20 @@
+Quick notes on meta-mion-sde.
+
+This layer requires you to have in ${MIONBASE} a directory named bf-sde.
+
+Within bf-sde should be the following:
+
+bf-reference-bsp-9.3.0-<MACHINE>.zip
+bf-reference-bsp-9.3.0.tgz
+bf-sde-9.3.0.tgz
+
+Once these are added to the directory you should:
+
+cd bf-sde
+git init
+git add .
+git commit -s -m"Adding reference bsp and sde"
+
+Eventually we'll use externalsrc, but for now this was easiest for
+me to get working.
+
