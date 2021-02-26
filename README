@@ -14,8 +14,7 @@ openembedded-core/meta
 
 URI	git@github.com:NetworkGradeLinux/meta-mion 
 branch: dunfell
-meta-mion/meta-mion 
-meta-mion/meta-mion-simplerunc 
+meta-mion 
 
 URI	git@github.com:NetworkGradeLinux/meta-mion-bsp
 branch: dunfell
@@ -64,6 +63,8 @@ I. Adding the meta-mion-sde layer to your build
 =================================================
 
 Run 'bitbake-layers add-layer meta-mion'
+=======
+Quick notes on meta-mion-sde.
 
 This layer requires you to have in ${MIONBASE} a directory named bf-sde.
 
