@@ -1,6 +1,6 @@
-diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf/include/bf_mav_led.h BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/delta-bf/include/bf_mav_led.h
---- BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf/include/bf_mav_led.h	2019-11-19 16:00:22.000000000 +0100
-+++ BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/delta-bf/include/bf_mav_led.h	2020-11-20 12:51:31.701363265 +0100
+diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/platforms/apsn/include/bf_mav_led.h BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/apsn/include/bf_mav_led.h
+--- BF2556X-1T_BSP_9.0.0-master.orig/platforms/apsn/include/bf_mav_led.h	2019-11-19 16:00:22.000000000 +0100
++++ BF2556X-1T_BSP_9.0.0-master/platforms/apsn/include/bf_mav_led.h	2020-11-20 12:51:31.701363265 +0100
 @@ -40,6 +40,71 @@
  #define BF_MAV_PORT_LED_BLUE 0x1
  #define BF_MAV_PORT_LED_BLINK 0x8
@@ -73,9 +73,9 @@ diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf
  /* display port led using tofino stateout buffer */
  int bf_pltfm_port_led_by_tofino_set(int chip_id,
                                      bf_pltfm_port_info_t *port_info,
-diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c
---- BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:22:33.705540029 +0100
-+++ BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:46:08.989512040 +0100
+diff -ruN BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/aspn/src/bf_pltfm_led/bf_pltfm_mav_led.c BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/aspn/src/bf_pltfm_led/bf_pltfm_mav_led.c
+--- BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/aspn/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:22:33.705540029 +0100
++++ BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/aspn/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:46:08.989512040 +0100
 @@ -111,8 +111,6 @@
  #define BF_LED_STATEOUT_BUF_SIZE 128
  

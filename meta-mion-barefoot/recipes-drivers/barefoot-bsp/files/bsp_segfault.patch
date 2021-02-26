@@ -1,5 +1,5 @@
---- BF2556X-1T_BSP_9.0.0-master.orig/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c	2019-11-19 16:00:22.000000000 +0100
-+++ BF2556X-1T_BSP_9.0.0-master/bf-platforms-9.0.0/platforms/delta-bf/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:20:39.053542297 +0100
+--- BF2556X-1T_BSP_9.0.0-master.orig/platforms/apsn/src/bf_pltfm_led/bf_pltfm_mav_led.c	2019-11-19 16:00:22.000000000 +0100
++++ BF2556X-1T_BSP_9.0.0-master/platforms/apsn/src/bf_pltfm_led/bf_pltfm_mav_led.c	2020-11-20 10:20:39.053542297 +0100
 @@ -1018,7 +1018,7 @@
                              /* get speed info */
                              port_hdl.conn_id = bf_pltfm_port_runtime_info[i].conn_id;
