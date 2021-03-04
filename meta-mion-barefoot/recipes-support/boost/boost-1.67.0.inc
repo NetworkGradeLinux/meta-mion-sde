@@ -7,16 +7,15 @@ HOMEPAGE = "http://www.boost.org/"
 LICENSE = "BSL-1.0 & MIT & Python-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE_1_0.txt;md5=e4224ccaecb14d942c71d31bef20d78c"
 
-BOOST_VER = "${@"_".join(d.getVar("PV",1).split("."))}"
-BOOST_MAJ = "${@"_".join(d.getVar("PV",1).split(".")[0:2])}"
+BOOST_VER = "${@"_".join(d.getVar("PV").split("."))}"
+BOOST_MAJ = "${@"_".join(d.getVar("PV").split(".")[0:2])}"
 BOOST_P = "boost_${BOOST_VER}"
 
-SRC_URI = "${SOURCEFORGE_MIRROR}/boost/${BOOST_P}.tar.bz2 \
-           file://0001-mips1-fix-added-gcc.jam-was-passing-the-options-m32-.patch \
-           file://0002-Don-t-pass-m32-m64-where-it-s-not-supported.patch \
-"
+SRC_URI = "${SOURCEFORGE_MIRROR}/project/boost/boost/${PV}/${BOOST_P}.tar.bz2"
 
-SRC_URI[md5sum] = "b8839650e61e9c1c0a89f371dd475546"
-SRC_URI[sha256sum] = "fdfc204fc33ec79c99b9a74944c3e54bd78be4f7f15e260c0e2700a36dc7d3e5"
+SRC_URI[sha256sum] = "2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba"
+
+UPSTREAM_CHECK_URI = "http://www.boost.org/users/download/"
+UPSTREAM_CHECK_REGEX = "boostorg/release/(?P<pver>.*)/source/"
 
 S = "${WORKDIR}/${BOOST_P}"
