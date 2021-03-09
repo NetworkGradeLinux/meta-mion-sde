@@ -9,7 +9,7 @@ SRCREV_p4runtime = "c09cd0bf2b529d328c7325ab00ab013ea74dc796"
 SRCREV_gnmi = "9c8d9e965b3e854107ea02c12ab11b70717456f2"
 SRCREV_googletest = "f5edb4f542e155c75bc4b516f227911d99ec167c"
 
-SRC_URI = "git://github.com/p4lang/PI;name=${BPN} \
+SRC_URI = "git://github.com/p4lang/PI;name=${BPN};branch=main \
            git://github.com/p4lang/p4runtime;branch=main;name=p4runtime;destsuffix=git/proto/p4runtime \
            git://github.com/openconfig/gnmi.git;name=gnmi;destsuffix=git/proto/openconfig/gnmi \
            git://github.com/google/googletest.git;name=googletest;destsuffix=git/third_party/googletest \
