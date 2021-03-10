@@ -11,7 +11,7 @@ DEPENDS += "bf-drivers bf-syslibs libusb1 curl unzip-native"
 
 do_unpack[depends] += "unzip-native:do_populate_sysroot"
 
-inherit autotools-brokensep
+inherit autotools-brokensep gettext
 
 TARGET_CFLAGS += "-Wno-error "
 
