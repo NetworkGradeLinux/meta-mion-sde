@@ -15,7 +15,7 @@ inherit autotools-brokensep gettext
 
 TARGET_CFLAGS += "-Wno-error "
 
-EXTRA_OECONF += "--prefix=${BSP_INSTALL} --with-tof-brgup-plat"
+EXTRA_OECONF += "--prefix=${STAGING_INCDIR} --with-tof-brgup-plat"
 EXTRA_OEMAKE += "-C ${SRC}/bf-platforms-${SDE_VERSION}"
 INSANE_SKIP_${PN} += " file-rdeps"
 
