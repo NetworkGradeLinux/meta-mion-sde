@@ -17,9 +17,9 @@ FILES_${PN} += "${libdir}/${PYTHON_DIR}/*"
 FILES_${PN} += "${datadir}/*"
 FILES_${PN}-dev += "${libdir}/*.so"
 
-inherit autotools sde-package-extract python3-dir python3native
+inherit autotools sde-package-extract pythonnative python3-dir python3native
 
-EXTRA_OECONF += "enable_thrift=no enable_grpc=yes enable_bfrt=no enable_p4rt=yes enable_pi=yes --without-kdrv "
+EXTRA_OECONF += "enable_thrift=no enable_grpc=yes enable_bfrt=yes enable_p4rt=yes enable_pi=yes --without-kdrv "
 
 EXTRA_OEMAKE += "KDIR=${STAGING_KERNEL_DIR}"
 
@@ -43,8 +43,9 @@ do_install_append() {
     install -m 0755 ${S}/libavago.${TARGET_ARCH}.so ${D}${libdir}/libavago.so.0
     ln -sf --relative ${D}${libdir}/libavago.so.0 ${D}${libdir}/libavago.so
     install -d ${D}/usr/share/tofino_sds_fw/avago/firmware
-    install -m 0755 ${S}/src/avago/firmware/*rom ${D}/usr/share/tofino_sds_fw/avago/firmware
-
+    install -m 0755 ${S}/src/avago/firmware/*rom ${D}/usr/share/tofino_sds_fw/avago/firmware 
     # Remove because PI installs this as well
     rm -rf ${D}${includedir}/google
+    # Remove because barefoot-bsp provides
+    rm -rf ${D}${libdir}/python3.4
 }
