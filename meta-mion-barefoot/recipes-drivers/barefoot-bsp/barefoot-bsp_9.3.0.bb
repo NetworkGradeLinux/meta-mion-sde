@@ -11,11 +11,11 @@ DEPENDS += "bf-kdrv bf-drivers bf-syslibs libusb1 curl unzip-native"
 
 do_unpack[depends] += "unzip-native:do_populate_sysroot"
 
-inherit autotools-brokensep gettext
+inherit autotools-brokensep
 
 TARGET_CFLAGS += "-Wno-error "
 
-EXTRA_OECONF += "--prefix=${BSP_INSTALL} --with-tof-brgup-plat"
+EXTRA_OECONF += "--prefix=${STAGING_INCDIR} --with-tof-brgup-plat"
 EXTRA_OEMAKE += "-C ${SRC}/bf-platforms-${SDE_VERSION}"
 INSANE_SKIP_${PN} += " file-rdeps"
 
