@@ -7,7 +7,7 @@ SRCREV = "${AUTOREV}"
 SDE_VERSION = "9.3.0"
 BSP_PLATFORM_CODE ?= "bf-reference-bsp-9.3.0-BF2556_1c5723d"
 
-DEPENDS += "bf-drivers bf-syslibs libusb1 curl unzip-native"
+DEPENDS += "bf-kdrv bf-drivers bf-syslibs libusb1 curl unzip-native"
 
 do_unpack[depends] += "unzip-native:do_populate_sysroot"
 
