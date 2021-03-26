@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 DEPENDS += "p4-compilers-native"
 
 EXTRA_OEP4 ?= ""

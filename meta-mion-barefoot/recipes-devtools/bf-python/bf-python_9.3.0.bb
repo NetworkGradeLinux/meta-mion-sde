@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 SUMMARY = "Patched version of Python 3 distributed with the Barefoot SDE"
 HOMEPAGE = "http://www.python.org"
 LICENSE = "PSFv2"

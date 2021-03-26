@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 include boost-${PV}.inc
 include boost.inc
 

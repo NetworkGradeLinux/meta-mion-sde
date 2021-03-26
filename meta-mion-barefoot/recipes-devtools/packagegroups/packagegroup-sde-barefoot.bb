@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 SUMMARY = "Barefoot SDE"
 
 inherit packagegroup

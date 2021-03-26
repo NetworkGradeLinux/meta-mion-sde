@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=a2f59868b389d66faed0cf18e0caa486"
 

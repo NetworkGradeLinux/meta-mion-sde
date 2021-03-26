@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 extract() {
     # Extract SDE
     tar xzf ${WORKDIR}/git/bf-sde-${PV}.tgz

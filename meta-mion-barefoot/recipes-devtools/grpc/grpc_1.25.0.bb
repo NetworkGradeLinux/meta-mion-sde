@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 DESCRIPTION = "A high performance, open source, general-purpose RPC framework. \
 Provides gRPC libraries for multiple languages written on top of shared C core library \
 (C++, Node.js, Python, Ruby, Objective-C, PHP, C#)"

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 LICENSE = "Apache-2.0 & BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2f3453ba8e98aaed11a290758a999e65 \
                     file://proto/p4runtime/LICENSE;md5=86d3f3a95c324c9479bd8986968f4327 \

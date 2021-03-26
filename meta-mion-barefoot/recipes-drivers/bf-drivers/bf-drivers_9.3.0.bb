@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 LICENSE = "CLOSED"
 
 SRC_URI = "git://${MIONBASE}/bf-sde \

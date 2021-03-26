@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 include boost-${PV}.inc
 
 SUMMARY = "Portable Boost.Jam build tool for boost"
