@@ -1,4 +1,69 @@
-Quick notes on meta-mion-sde.
+This README file contains information on the contents of the meta-mion-sde layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+URI git://git.openembedded.org/bitbake
+branch: 1.46
+
+URI	git://git.openembedded.org/openembedded-core  
+branch: dunfell
+openembedded-core/meta 
+
+URI	git@github.com:NetworkGradeLinux/meta-mion 
+branch: dunfell
+meta-mion/meta-mion 
+meta-mion/meta-mion-simplerunc 
+
+URI	git@github.com:NetworkGradeLinux/meta-mion-bsp
+branch: dunfell
+meta-mion-stordis
+
+URI	git://git.openembedded.org/meta-openembedded 
+branch: dunfell
+meta-openembedded/meta-oe 
+meta-openembedded/meta-networking 
+meta-openembedded/meta-python 
+meta-openembedded/meta-filesystems 
+
+URI	https://git.openembedded.org/meta-python2 
+branch: dunfell
+meta-python2 
+
+URI	https://git.yoctoproject.org/git/meta-virtualization 
+branch: dunfell
+meta-virtualization 
+
+URI	git://git.yoctoproject.org/meta-yocto 
+branch: dunfell
+meta-yocto/meta-yocto-bsp 
+
+URI     git@github.com:NetworkGradeLinux/meta-mion-sde
+branch: dunfell
+meta-mion-barefoot
+
+
+Patches
+=======
+
+Please submit any patches against the meta-mion-sde layer via the meta-mion-sde github at https://github.com/NetworkGradeLinux/meta-mion-sde
+and cc: the maintainer:
+
+Maintainer: Eilís Ní Fhlannagáin <pidge@toganlabs.com>
+
+Table of Contents
+=================
+
+  I. Adding the meta-mion-sde layer to your build
+ II. Adding the bf-sde to your build
+
+
+I. Adding the meta-mion-sde layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer meta-mion'
 
 This layer requires you to have in ${MIONBASE} a directory named bf-sde.
 
@@ -15,6 +80,17 @@ git init
 git add .
 git commit -s -m"Adding reference bsp and sde"
 
-Eventually we'll use externalsrc, but for now this was easiest for
-me to get working.
+TODO: Use externalsrc
+
+II. Adding the meta-mion-sde layer to your build
+=================================================
+
+Withing build/conf/local.conf you will need to add an IMAGE_INSTALL
+with the appropriate barefoot sde packages. Keep in mind that because
+the barefoot sde has many different ways to be compiled, you may need to bbappend
+these recipes and your IMAGE_INSTALL may be different.
+
+For the reference implementation we are using:
+
+IMAGE_INSTALL = "barefoot-bsp grpc python3 bf-utils bf-syslibs bf-drivers procps bf-kdrv boost pi judy"
 
