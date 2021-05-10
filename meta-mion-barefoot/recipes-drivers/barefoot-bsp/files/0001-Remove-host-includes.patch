@@ -9,30 +9,11 @@ Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Eilís Ní Fhlannagáin <pidge@toganlabs.com>
 ---
- configure.ac                               | 6 +++---
  platforms/apsn/cp2112_util/Makefile.am     | 2 +-
  platforms/apsn/diags/mavericks/Makefile.am | 2 +-
  platforms/apsn/tofino_spi_util/Makefile.am | 2 +-
  4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index bb096f1..79acdc2 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -127,10 +127,10 @@ AC_SUBST([PREFIX_PATH], ["$(if test x$prefix != xNONE; then \
-                            )"])
- export PREFIX_PATH
- AC_SUBST([BFPLATFORMS_CFLAGS], ["-g -Wall -Wextra -Wpedantic -Wno-missing-field-initializers -Wno-unused-parameter -Werror"])
--AC_SUBST([AM_CFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
--AC_SUBST([AM_CXXFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
-+AC_SUBST([AM_CFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS"])
-+AC_SUBST([AM_CXXFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS"])
- AC_SUBST([AM_CPPFLAGS], ["$MY_CPPFLAGS -I\$(top_srcdir)/drivers/include -I\$(top_srcdir)/platforms/include -I\$(top_srcdir)/platforms/apsn/tcl_server/include"])
--AC_SUBST([AM_LDFLAGS], ["$COVERAGE_FLAGS -L$LIB_DIR"])
-+AC_SUBST([AM_LDFLAGS], ["$COVERAGE_FLAGS"])
- AC_SUBST([MY_PYTHONPATH], ["$PYTHON_DIR"])
- 
- AC_CHECK_LIB([pthread], [pthread_create], [],
 diff --git a/platforms/apsn/cp2112_util/Makefile.am b/platforms/apsn/cp2112_util/Makefile.am
 index 08749a5..5c090c7 100644
 --- a/platforms/apsn/cp2112_util/Makefile.am

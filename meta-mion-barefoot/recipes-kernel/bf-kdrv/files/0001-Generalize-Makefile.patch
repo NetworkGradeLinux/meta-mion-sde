@@ -7,10 +7,10 @@ Subject: [PATCH] Generalize Makefile.
  .../pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile   | 25 +++++++------------
  1 file changed, 9 insertions(+), 16 deletions(-)
 
-diff --git a/tofino/barefoot/bf-sde-9.3.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile b/tofino/barefoot/bf-sde-9.3.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
+diff --git a/tofino/barefoot/bf-sde-9.4.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile b/tofino/barefoot/bf-sde-9.4.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
 index dab125e..1fecb29 100644
---- a/tofino/barefoot/bf-sde-9.3.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
-+++ b/tofino/barefoot/bf-sde-9.3.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
+--- a/tofino/barefoot/bf-sde-9.4.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
++++ b/tofino/barefoot/bf-sde-9.4.0/pkgsrc/bf-drivers/kdrv/bf_kdrv/Makefile
 @@ -4,24 +4,17 @@
  #
  ###############################################################################

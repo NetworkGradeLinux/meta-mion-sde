@@ -1,0 +1,24 @@
+diff -ruN bf-platforms-9.4.0.orig/platforms/newport/src/Makefile.am bf-platforms-9.4.0/platforms/newport/src/Makefile.am
+--- bf-platforms-9.4.0.orig/platforms/newport/src/Makefile.am	2021-05-24 12:29:43.605360640 +0100
++++ bf-platforms-9.4.0/platforms/newport/src/Makefile.am	2021-05-24 12:31:05.743263242 +0100
+@@ -18,7 +18,7 @@
+ libacctonbf_chss_mgmt_la_CPPFLAGS = $(AM_CPPFLAGS) -DDEVICE_IS_SW_MODEL
+ endif
+ 
+-json_targetdir = $(datadir)/platforms/board-maps/accton
++json_targetdir = ${DESTDIR}/$(datadir)/platforms/board-maps/accton
+ 
+ install-data-hook:
+ 	mkdir -p $(json_targetdir); \
+diff -ruN bf-platforms-9.4.0.orig/platforms/tofino-bringup/Makefile.am bf-platforms-9.4.0/platforms/tofino-bringup/Makefile.am
+--- bf-platforms-9.4.0.orig/platforms/tofino-bringup/Makefile.am	2021-05-24 12:29:43.605360640 +0100
++++ bf-platforms-9.4.0/platforms/tofino-bringup/Makefile.am	2021-05-24 12:30:49.242882222 +0100
+@@ -14,7 +14,7 @@
+ lib_LTLIBRARIES = \
+ libtofbringup_driver.la
+ 
+-json_targetdir = $(datadir)/platforms/tofino-bringup
++json_targetdir = ${DESTDIR}/$(datadir)/platforms/tofino-bringup
+ 
+ install-data-hook:
+ 	mkdir -p $(json_targetdir); \

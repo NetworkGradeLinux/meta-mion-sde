@@ -3,11 +3,12 @@
 LICENSE = "CLOSED"
 
 SRC_URI = "git://${MIONBASE}/bf-sde \
+           file://json_targetdir_correction.patch \
            file://0001-Remove-host-includes.patch;patchdir=${WORKDIR}/git/bf-platforms-${SDE_VERSION}"
 
 SRCREV = "${AUTOREV}"
-SDE_VERSION = "9.3.0"
-BSP_PLATFORM_CODE ?= "bf-reference-bsp-9.3.0-BF2556_1c5723d"
+SDE_VERSION = "9.4.0"
+BSP_PLATFORM_CODE ?= "bf-reference-bsp-9.4.0-BF2556_1.0.2"
 
 DEPENDS += "bf-kdrv bf-drivers bf-syslibs libusb1 curl unzip-native"
 
@@ -25,7 +26,7 @@ SECURITY_LDFLAGS = ""
 AUTOTOOLS_SCRIPT_PATH ?= "${SRC}/bf-platforms-${SDE_VERSION}"
 S="${WORKDIR}/git/bf-platforms-${SDE_VERSION}"
 SRC="${WORKDIR}/git"
-BSP="${SRC}/bf-reference-bsp-9.3.0"
+BSP="${SRC}/bf-reference-bsp-9.4.0"
 SDE_INSTALL="${SRC}/bf-sde-${SDE_VERSION}"
 BSP_INSTALL="$SDE_INSTALL"
 
@@ -41,9 +42,9 @@ extract() {
     cd ${BSP}
     ./extract_all.sh
     cd ${SRC}
-    unzip ${SRC}/${BSP_PLATFORM_CODE}.zip -d ${SRC}/bf-platforms-${SDE_VERSION}/platforms
+    unzip ${SRC}/${BSP_PLATFORM_CODE}.zip -d ${SRC}/bf-platforms-${SDE_VERSION}
     cd ${SRC}/bf-platforms-${SDE_VERSION}
-    patch -p1 < ./platforms/bf2556x_1t.diff
+    #patch -p1 < ./platforms/bf2556x_1t.diff
 
     # There is a bunch of cruft in how this is packaged.
     # Removing all the cruft
@@ -75,3 +76,4 @@ python do_unpack_append() {
     bb.build.exec_func("extract", d)
 }
 
+FILES_${PN} += "${datadir}"

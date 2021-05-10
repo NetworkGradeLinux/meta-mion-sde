@@ -11,29 +11,10 @@ Based off of work from Mattias Waldo
 
 Signed-off-by: Eilís Ní Fhlannagáin <pidge@toganlabs.com>
 ---
- configure.ac                               | 6 +++---
  platforms/apsn/cp2112_util/Makefile.am     | 2 +-
  platforms/apsn/tofino_spi_util/Makefile.am | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index d6cdd8d..e4d80ef 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -127,10 +127,10 @@ AC_SUBST([PREFIX_PATH], ["$(if test x$prefix != xNONE; then \
-                            )"])
- export PREFIX_PATH
- AC_SUBST([BFPLATFORMS_CFLAGS], ["-g -Wall -Wextra -Wpedantic -Wno-missing-field-initializers -Wno-unused-parameter -Werror"])
--AC_SUBST([AM_CFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
--AC_SUBST([AM_CXXFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS -I$PREFIX_PATH/include"])
-+AC_SUBST([AM_CFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS"])
-+AC_SUBST([AM_CXXFLAGS], ["$COVERAGE_FLAGS $ASAN_FLAGS"])
- AC_SUBST([AM_CPPFLAGS], ["$MY_CPPFLAGS -I\$(top_srcdir)/drivers/include -I\$(top_srcdir)/platforms/include -I\$(top_srcdir)/platforms/apsn/tcl_server/include"])
--AC_SUBST([AM_LDFLAGS], ["$COVERAGE_FLAGS -L$LIB_DIR"])
-+AC_SUBST([AM_LDFLAGS], ["$COVERAGE_FLAGS"])
- AC_SUBST([MY_PYTHONPATH], ["$PYTHON_DIR"])
- 
- AC_CHECK_LIB([pthread], [pthread_create], [],
 diff --git a/platforms/apsn/cp2112_util/Makefile.am b/platforms/apsn/cp2112_util/Makefile.am
 index 08749a5..5c090c7 100644
 --- a/platforms/apsn/cp2112_util/Makefile.am
