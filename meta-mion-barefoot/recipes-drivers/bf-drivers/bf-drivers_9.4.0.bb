@@ -52,3 +52,6 @@ do_install_append() {
     rm -rf ${D}${libdir}/python3.4
     install -d ${D}/var/log/ptne/
 }
+
+FILES_${PN}_append = "/var/log/ptne/ \
+                      /usr/share/"
