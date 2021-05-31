@@ -44,9 +44,11 @@ do_install_append() {
     install -m 0755 ${S}/libavago.${TARGET_ARCH}.so ${D}${libdir}/libavago.so.0
     ln -sf --relative ${D}${libdir}/libavago.so.0 ${D}${libdir}/libavago.so
     install -d ${D}/usr/share/tofino_sds_fw/avago/firmware
-    install -m 0755 ${S}/src/avago/firmware/*rom ${D}/usr/share/tofino_sds_fw/avago/firmware 
+    cp -av ${S}/src/avago/firmware/*rom ${D}/usr/share/tofino_sds_fw/avago/firmware 
+    chown -R root:root ${D}/usr/share/tofino_sds_fw/avago/firmware
     # Remove because PI installs this as well
     rm -rf ${D}${includedir}/google
     # Remove because barefoot-bsp provides
     rm -rf ${D}${libdir}/python3.4
+    install -d ${D}/var/log/ptne/
 }
