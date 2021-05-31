@@ -3,7 +3,6 @@
 LICENSE = "CLOSED"
 
 SRC_URI = "git://${MIONBASE}/bf-sde \
-           file://sde_mac_learning_aging_crash.patch \
            "
 
 SRCREV = "${AUTOREV}"
