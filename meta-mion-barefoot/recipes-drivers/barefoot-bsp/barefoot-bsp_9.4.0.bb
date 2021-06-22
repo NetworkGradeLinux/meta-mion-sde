@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 
 SRC_URI = "git://${MIONBASE}/bf-sde \
            file://json_targetdir_correction.patch \
-           file://0001-Remove-host-includes.patch;patchdir=${WORKDIR}/git/bf-platforms-${SDE_VERSION}"
+"
 
 SRCREV = "${AUTOREV}"
 SDE_VERSION = "9.4.0"
@@ -17,7 +17,6 @@ inherit autotools-brokensep gettext
 
 TARGET_CFLAGS += "-Wno-error "
 
-EXTRA_OECONF += "--prefix=${STAGING_DIR} --with-tof-brgup-plat --with-libtool-sysroot=${STAGING_DIR}"
 EXTRA_OEMAKE += "-C ${SRC}/bf-platforms-${SDE_VERSION}"
 INSANE_SKIP_${PN} += " file-rdeps"
 
