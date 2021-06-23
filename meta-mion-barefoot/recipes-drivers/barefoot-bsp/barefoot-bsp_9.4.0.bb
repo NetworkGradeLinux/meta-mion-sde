@@ -42,19 +42,6 @@ extract() {
     ./extract_all.sh
     cd ${SRC}
     unzip ${SRC}/${BSP_PLATFORM_CODE}.zip -d ${SRC}/bf-platforms-${SDE_VERSION}
-    cd ${SRC}/bf-platforms-${SDE_VERSION}
-    #patch -p1 < ./platforms/bf2556x_1t.diff
-
-    # There is a bunch of cruft in how this is packaged.
-    # Removing all the cruft
-    find ${S} -name Makefile.in -delete
-    find ${S} -name Makefile -delete
-    find ${S} -name "*.o" -delete
-    find ${S} -name ".deps" -exec rm -rv {} +
-    find ${S} -name ".libs" -exec rm -rv {} +
-    find ${S} -name "*.la" -delete
-    find ${S} -name "*.lo" -delete
-    rm ${S}/configure
 }
 
 do_configure_prepend() {
