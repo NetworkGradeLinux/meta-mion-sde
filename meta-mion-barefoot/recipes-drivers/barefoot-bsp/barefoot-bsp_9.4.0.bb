@@ -75,4 +75,12 @@ python do_unpack_append() {
     bb.build.exec_func("extract", d)
 }
 
-FILES_${PN} += "${datadir}"
+python do_install_append() {
+    install -d ${D}${sysconfdir}/profile.d
+    echo "export SDE_INSTALL=\"/usr\"" > ${D}${sysconfdir}/profile.d/export_sde
+    chmod 755 ${D}${sysconfdir}/profile.d
+}
+
+FILES_${PN} += "${datadir} \
+                ${sysconfdir} \
+               "
